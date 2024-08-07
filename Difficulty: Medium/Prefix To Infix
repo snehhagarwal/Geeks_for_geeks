@@ -1,0 +1,22 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    String s="*+AB-CD";
+		int i=s.length()-1;
+		Stack<String> st=new Stack<>();
+		while(i>=0){
+		    if((s.charAt(i)>='A' && s.charAt(i)<='Z') || (s.charAt(i)>='a' && s.charAt(i)<='z') || (s.charAt(i)>='0' && s.charAt(i)<='9')){
+                st.push(s.charAt(i)+"");
+            }
+            else{
+                String t1=st.pop();
+                String t2=st.pop();
+                String conv='('+t1+s.charAt(i)+t2+')';
+                st.push(conv);
+            }
+            i--;
+		}
+		System.out.println(st.peek());
+	}
+}
